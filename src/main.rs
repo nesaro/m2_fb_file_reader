@@ -1,8 +1,12 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+use std::env;
 
 fn main() {
-    let file = File::open("non_existent_file.txt");
+    let args: Vec<String> = env::args().collect();
+    println!("My path is {}.", args[1]);
+
+    let file = File::open(args[1].clone());
     let file = match file {
         Ok(file) => file,
         Err(error) => match error.kind() {
