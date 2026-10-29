@@ -4,6 +4,10 @@ use std::env;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+
+    if args.len() == 1 {
+        panic!("please pass the file to read as an argument")
+    }
     println!("My path is {}.", args[1]);
 
     let file = File::open(args[1].clone());
